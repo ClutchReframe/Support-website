@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support for ClutchReframe Clips, a Dota 2 Overwolf app for capturing highlights and creating vertical clips.">
+    <meta name="theme-color" content="#070910">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ClutchReframe Clips Support">
+    <meta property="og:description" content="Support for the Dota 2 Overwolf app.">
+    <meta property="og:url" content="https://support.clutchreframe.com/">
+    <meta property="og:site_name" content="ClutchReframe Support">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="ClutchReframe Clips Support">
+    <meta name="twitter:description" content="Support for the Dota 2 Overwolf app.">
+    <title>ClutchReframe Clips Support</title>
+    <link rel="canonical" href="https://support.clutchreframe.com/">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #070910;
+            --surface: #10141d;
+            --surface-2: #151a24;
+            --border: #293142;
+            --text: #eef2f7;
+            --muted: #a9b3c2;
+            --soft: #d5dbe5;
+            --cyan: #21d4f4;
+            --violet: #8b5cf6;
+            --green: #49d28f;
+            --amber: #f6c76b;
+            --max: 1040px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: 1rem;
+            top: -4rem;
+            z-index: 10;
+            padding: 0.75rem 1rem;
+            background: var(--text);
+            color: var(--bg);
+            border-radius: 6px;
+            transition: top 0.16s ease;
+        }
+
+        .skip-link:focus {
+            top: 1rem;
+        }
+
+        .site-header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(7, 9, 16, 0.94);
+        }
+
+        .nav {
+            width: min(100% - 2rem, var(--max));
+            min-height: 68px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 750;
+            letter-spacing: 0.01em;
+        }
+
+        .brand-mark {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(33, 212, 244, 0.45);
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            background: #0b111a;
+        }
+
+        .brand-mark svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            padding: 0.55rem 0.7rem;
+            border-radius: 6px;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--text);
+            background: var(--surface);
+            outline: none;
+        }
+
+        main {
+            width: min(100% - 2rem, var(--max));
+            margin: 0 auto;
+        }
+
+        .hero {
+            padding: 4rem 0 3rem;
+        }
+
+        .eyebrow {
+            color: var(--cyan);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin: 0 0 0.9rem;
+        }
+
+        h1 {
+            max-width: 780px;
+            margin: 0;
+            font-size: clamp(2.25rem, 7vw, 4.7rem);
+            line-height: 1.03;
+            letter-spacing: 0;
+        }
+
+        .hero-text {
+            max-width: 720px;
+            margin: 1.2rem 0 0;
+            color: var(--muted);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.7rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 42px;
+            padding: 0.65rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            background: var(--surface);
+            color: var(--text);
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .button.primary {
+            background: var(--cyan);
+            border-color: var(--cyan);
+            color: #041016;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            border-color: var(--cyan);
+            outline: none;
+        }
+
+        .section {
+            padding: 2.4rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-heading {
+            display: grid;
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.4rem;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: clamp(1.55rem, 3vw, 2.1rem);
+            line-height: 1.15;
+            letter-spacing: 0;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            padding: 1.1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+        }
+
+        .card h3 {
+            margin: 0 0 0.55rem;
+            font-size: 1.05rem;
+        }
+
+        .card p,
+        .card li {
+            color: var(--muted);
+        }
+
+        .card p {
+            margin: 0;
+        }
+
+        .card ul,
+        .steps {
+            margin: 0;
+            padding-left: 1.15rem;
+        }
+
+        .steps li + li,
+        .card li + li {
+            margin-top: 0.4rem;
+        }
+
+        .code-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        code {
+            display: inline-block;
+            max-width: 100%;
+            padding: 0.52rem 0.65rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: #080d14;
+            color: var(--soft);
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            overflow-wrap: anywhere;
+        }
+
+        .notice {
+            margin-top: 1rem;
+            padding: 0.95rem 1rem;
+            border-left: 3px solid var(--amber);
+            background: var(--surface-2);
+            color: var(--soft);
+            border-radius: 0 7px 7px 0;
+        }
+
+        .support-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        .footer-inner {
+            width: min(100% - 2rem, var(--max));
+            margin: 0 auto;
+            padding: 1.6rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .footer a {
+            color: var(--soft);
+            text-decoration: none;
+        }
+
+        .footer a:hover,
+        .footer a:focus-visible {
+            color: var(--cyan);
+            outline: none;
+        }
+
+        .status {
+            min-height: 1.5rem;
+            margin-top: 0.6rem;
+            color: var(--green);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 760px) {
+            .nav {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            .nav-links {
+                justify-content: flex-start;
+            }
+
+            .hero {
+                padding: 2.6rem 0 2rem;
+            }
+
+            .section-heading,
+            .grid,
+            .support-list {
+                grid-template-columns: 1fr;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to support content</a>
+    <header class="site-header">
+        <nav class="nav" aria-label="Main navigation">
+            <a class="brand" href="/">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" role="img">
+                        <path d="M5 7.5h14M5 16.5h14" stroke="#21d4f4" stroke-width="1.8" stroke-linecap="round"/>
+                        <path d="M8 4.5v15M16 4.5v15" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                </span>
+                <span>ClutchReframe Support</span>
+            </a>
+            <div class="nav-links">
+                <a href="#setup">Setup</a>
+                <a href="#troubleshooting">Troubleshooting</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="hero" aria-labelledby="page-title">
+            <p class="eyebrow">Dota 2 Overwolf app support</p>
+            <h1 id="page-title">ClutchReframe Clips Support</h1>
+            <p class="hero-text">
+                Support for ClutchReframe Clips, a Dota 2 Overwolf app that captures gameplay highlights
+                and helps create vertical clips on your PC.
+            </p>
+            <div class="hero-actions">
+                <a class="button primary" href="mailto:clutchreframe@gmail.com">Email support</a>
+                <a class="button" href="#setup">Dota 2 setup</a>
+            </div>
+        </section>
+
+        <section class="section" id="setup" aria-labelledby="setup-title">
+            <div class="section-heading">
+                <h2 id="setup-title">Dota 2 setup</h2>
+                <p>
+                    ClutchReframe Clips needs Dota 2 Game State Integration so it can reliably detect match state,
+                    kills, deaths, and assists.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Steam launch option</h3>
+                <p>Add this launch option in Steam, then restart Dota 2.</p>
+                <div class="code-row">
+                    <code id="launch-option">-gamestateintegration</code>
+                    <button class="button" type="button" data-copy-target="launch-option">Copy launch option</button>
+                </div>
+                <div class="status" id="copy-status" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="section" id="troubleshooting" aria-labelledby="troubleshooting-title">
+            <div class="section-heading">
+                <h2 id="troubleshooting-title">No clips or empty Library</h2>
+                <p>
+                    If the Library is empty after playing Dota 2, start with these checks before contacting support.
+                </p>
+            </div>
+            <div class="grid">
+                <article class="card">
+                    <h3>1. Start Dota 2</h3>
+                    <p>Launch Dota 2 normally after ClutchReframe Clips is installed through Overwolf.</p>
+                </article>
+                <article class="card">
+                    <h3>2. Confirm setup</h3>
+                    <p>Make sure <code>-gamestateintegration</code> is in Steam launch options, then restart Dota 2.</p>
+                </article>
+                <article class="card">
+                    <h3>3. Trigger a highlight</h3>
+                    <p>Clips are created after kill, death, or assist moments. Return to the Library after the match or demo session ends.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="recorder" aria-labelledby="recorder-title">
+            <div class="section-heading">
+                <h2 id="recorder-title">Recorder conflict</h2>
+                <p>
+                    Other Overwolf recording apps may hold the recorder and prevent new clips from being captured.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Recovery steps</h3>
+                <ol class="steps">
+                    <li>Close or disable other Overwolf recording apps.</li>
+                    <li>Fully exit Overwolf from the system tray.</li>
+                    <li>Reopen Overwolf and ClutchReframe Clips.</li>
+                    <li>Restart Dota 2.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="section" id="contact" aria-labelledby="contact-title">
+            <div class="section-heading">
+                <h2 id="contact-title">Contact support</h2>
+                <p>
+                    If the issue continues, email support with a short report so we can identify where the capture flow failed.
+                </p>
+            </div>
+            <div class="support-list">
+                <article class="card">
+                    <h3>Send your report to</h3>
+                    <p><a href="mailto:clutchreframe@gmail.com">clutchreframe@gmail.com</a></p>
+                </article>
+                <article class="card">
+                    <h3>Include these details</h3>
+                    <ul>
+                        <li>App version</li>
+                        <li>Overwolf version</li>
+                        <li>Screenshot</li>
+                        <li>What happened</li>
+                        <li>Steps to reproduce</li>
+                    </ul>
+                </article>
+            </div>
+            <p class="notice">
+                ClutchReframe Clips is an independent companion app and is not affiliated with or endorsed by any game publisher.
+                Game titles and trademarks belong to their respective owners.
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span>ClutchReframe Clips Support</span>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms</a>
+                <a href="mailto:clutchreframe@gmail.com">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var buttons = document.querySelectorAll("[data-copy-target]");
+            var status = document.getElementById("copy-status");
+
+            function setStatus(message) {
+                if (status) {
+                    status.textContent = message;
+                }
+            }
+
+            buttons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    var targetId = button.getAttribute("data-copy-target");
+                    var target = document.getElementById(targetId);
+                    var value = target ? target.textContent.trim() : "";
+
+                    if (!value) {
+                        setStatus("Launch option unavailable.");
+                        return;
+                    }
+
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(value).then(function () {
+                            setStatus("Copied.");
+                        }).catch(function () {
+                            setStatus("Copy failed. Select the launch option and copy it manually.");
+                        });
+                        return;
+                    }
+
+                    setStatus("Select the launch option and copy it manually.");
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
